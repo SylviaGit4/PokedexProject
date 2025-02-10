@@ -27,4 +27,9 @@ def user_login(username, password):
         print("Valid Password")
         pass_correct = True
 
+
+    
+    if user_correct == True and pass_correct == True:
+        return(True)
+
 user_login("test","test")
