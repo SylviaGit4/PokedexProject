@@ -2,12 +2,12 @@ import pandas as pd
 
 ########################
 def user_login(username, password):
-    data = pd.read_csv("users.csv")
+    df = pd.read_csv("users.csv")
 
     user_correct = False
     pass_correct = False
 
-    if username not in data["Username"].values:
+    if username not in df["Username"].values:
         print("Invalid Username")
         while True:
             choice = input("Register a new account or try again [R/T]: ").upper()[0]
@@ -21,15 +21,18 @@ def user_login(username, password):
         print("Valid Username")
         user_correct = True
 
-    if password not in data["Password"].values:
+    if password not in df["Password"].values:
         print("Invalid Password, try again.")
     else:
         print("Valid Password")
         pass_correct = True
 
-
+    selected_row = df.loc[df["Username"] == username]
+    user_id = selected_row.iloc[0,0]
     
     if user_correct == True and pass_correct == True:
-        return(True)
+        return(True, user_id)
 
-user_login("test","test")
+login, user_id = user_login("test","test")
+
+print(user_id)
