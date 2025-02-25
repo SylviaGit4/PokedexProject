@@ -10,7 +10,7 @@ root.geometry("480x680")
 ########################
 
 #Calling the login function later
-login_valid, user_id = login.user_login()
+user_id = login.user_login()
 print(user_id)
 
 ########################

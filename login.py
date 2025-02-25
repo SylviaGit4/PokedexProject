@@ -27,8 +27,8 @@ def user_login():
 
     user_id = selected_row.iloc[0,0]
         
-    return(True, user_id)
+    return(user_id)
 
-login, user_id = user_login()
+user_id = user_login()
 
 print(user_id)
