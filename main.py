@@ -47,7 +47,8 @@ btn_login = tk.Button(
     master=frm_key_right,
     text="Login",
     command=lambda:user_login(),
-    bg="white",
+    bg="firebrick3",
+    fg="white",
 )
 
 btn_login.grid(column=0, row=0)
