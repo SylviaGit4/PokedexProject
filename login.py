@@ -10,10 +10,10 @@ def user_login():
     loginWindow.columnconfigure(0, weight=1)
     loginWindow.columnconfigure(1, weight=1)
     loginWindow.columnconfigure(2, weight=1)
-
-    user_id = ""
     
     def submit(username, password):
+
+        global user_id
 
         df = pd.read_csv("users.csv")
 
@@ -45,10 +45,6 @@ def user_login():
 
         if user_correct == True and pass_correct == True:
             user_id = str(selected_row.iloc[0,0])
-            return user_id
-
-        else:
-            return("UID Error. UID Invalid.")
 
     frm_main = tk.Frame(
         loginWindow,
