@@ -5,7 +5,7 @@ import tkinter as tk
 def user_login():
 
     loginWindow = tk.Tk()
-    loginWindow.title("Pokedex")
+    loginWindow.title("Login")
     loginWindow.geometry("480x680")
 
     user_id = ""
