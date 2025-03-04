@@ -23,7 +23,6 @@ frm_main = tk.Frame(
     highlightbackground="grey27",
     highlightthickness=5,
     )
-frm_main.grid(column=0,row=0, rowspan=1)
 
 
 frm_key_right = tk.Frame(
@@ -32,7 +31,6 @@ frm_key_right = tk.Frame(
     height="600px", 
     width="100px", 
     )
-frm_key_right.grid(column=1, row=0, rowspan=2)
 
 frm_key_bottom = tk.Frame(
     root,
@@ -40,15 +38,18 @@ frm_key_bottom = tk.Frame(
     height="200px",
     width="400px", 
     )
-frm_key_bottom.grid(column=0, row=1)
 
+frm_main.grid(column=0,row=0, rowspan=1)
+frm_key_right.grid(column=1, row=0, rowspan=2)
+frm_key_bottom.grid(column=0, row=1)
 
 btn_login = tk.Button(
     master=frm_key_right,
     text="Login",
-    command=user_login,
+     command=lambda:user_login(),
     bg="white",
 )
+
 btn_login.grid(column=0, row=0)
 
 ########################
