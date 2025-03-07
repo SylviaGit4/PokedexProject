@@ -11,8 +11,8 @@ root.geometry("600x800")
 
 #Calling the login function later
 def user_login():
-    user_id = login.user_login()
-    print(user_id)
+    user_data = login.user_login()
+    print(user_data)
 ########################
 
 frm_main = tk.Frame(
