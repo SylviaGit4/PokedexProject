@@ -3,13 +3,45 @@ import tkinter as tk
 
 ########################
 def user_login():
-    loginWindow = tk.Toplevel()
+    loginWindow = tk.toplevel()
     loginWindow.title("Login")
     loginWindow.geometry("200x100")
 
     loginWindow.columnconfigure(0, weight=1)
     loginWindow.columnconfigure(1, weight=1)
     loginWindow.columnconfigure(2, weight=1)
+    
+    def submit(username, password):
+
+        global user_data
+        user_data = None
+
+        df = pd.read_csv("users.csv")
+
+        user_correct = False
+
+        if str(username) in df["Username"].tolist():
+            print("Valid Username")
+            user_correct = True
+            user_data = df.loc[df["Username"] == username]
+
+            if str(password) == user_data.iloc[0,1] and user_correct == True:
+                print("Valid Password")
+                lbl_info.config(text="Username and Password Correct.")
+                loginWindow.destroy()
+                return(user_data)
+
+
+            else:
+                print("Invalid Password")
+                lbl_info.config(text="Invalid Password Input.")
+        
+        elif str(username) not in df["Username"].tolist():
+            print("Invalid Username")
+            lbl_info.config(text="Invalid Username Input.")
+        
+        else:
+            print("Invalid Input Occured.")
 
     frm_main = tk.Frame(
         loginWindow,
@@ -57,7 +89,7 @@ def user_login():
     sub_btn=tk.Button(
         master=frm_main,
         text = 'Submit', 
-        #command = lambda: submit(username_entry.get(), password_entry.get()),
+        command = lambda: submit(username_entry.get(), password_entry.get()),
         bg="indian red",
         fg="white",
     )
