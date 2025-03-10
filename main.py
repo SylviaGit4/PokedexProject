@@ -9,7 +9,7 @@ root.title("Pokedex")
 ########################
 
 #Calling the login function later
-def user_login():
+def login_button():
     user_data = login.user_login()
     print(user_data)
     #lbl_username.config(text="username")
@@ -48,7 +48,7 @@ frm_key_bottom.grid(column=0, row=1, sticky="ns")
 btn_login = tk.Button(
     master=frm_key_right,
     text="Login",
-    command=lambda:user_login(),
+    command=lambda:login_button(),
     bg="firebrick3",
     fg="white",
     padx="5",
