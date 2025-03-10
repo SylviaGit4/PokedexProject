@@ -11,8 +11,8 @@ root.title("Pokedex")
 #Calling the login function later
 def user_login():
     user_data = login.user_login()
-    
-    lbl_username.config(text=user_data[0])
+    print("test")
+    lbl_username.config(text="username")
 ########################
 
 frm_main = tk.Frame(

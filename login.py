@@ -11,9 +11,12 @@ def user_login():
     loginWindow.columnconfigure(1, weight=1)
     loginWindow.columnconfigure(2, weight=1)
     
+    valid_login = False
+
     def submit(username, password):
 
         global user_data
+        user_data = None
 
         df = pd.read_csv("users.csv")
 
@@ -28,6 +31,8 @@ def user_login():
                 print("Valid Password")
                 lbl_info.config(text="Username and Password Correct.")
                 loginWindow.destroy()
+                return(user_data)
+
 
             else:
                 print("Invalid Password")
@@ -99,5 +104,3 @@ def user_login():
     sub_btn.grid(row=3,column=1)
 
     loginWindow.mainloop()
-
-    return(user_data)
