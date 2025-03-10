@@ -18,7 +18,6 @@ def user_login():
         df = pd.read_csv("users.csv")
 
         user_correct = False
-        pass_correct = False
 
         if str(username) in df["Username"].tolist():
             print("Valid Username")
@@ -27,13 +26,11 @@ def user_login():
 
             if str(password) == user_data.iloc[0,1] and user_correct == True:
                 print("Valid Password")
-                pass_correct = True
                 lbl_info.config(text="Username and Password Correct.")
                 loginWindow.destroy()
 
             else:
                 print("Invalid Password")
-                pass_correct = False
                 lbl_info.config(text="Invalid Password Input.")
         
         elif str(username) not in df["Username"].tolist():
