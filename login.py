@@ -11,8 +11,6 @@ def user_login():
     loginWindow.columnconfigure(1, weight=1)
     loginWindow.columnconfigure(2, weight=1)
     
-    valid_login = False
-
     def submit(username, password):
 
         global user_data
