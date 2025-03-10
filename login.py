@@ -31,7 +31,6 @@ def user_login():
                 loginWindow.destroy()
                 return(user_data)
 
-
             else:
                 print("Invalid Password")
                 lbl_info.config(text="Invalid Password Input.")
@@ -101,6 +100,8 @@ def user_login():
     password_entry.grid(row=2,column=1, columnspan=2)
     sub_btn.grid(row=3,column=1)
 
-    loginWindow.mainloop()
+    login_valid = True
+    while login_valid:
+        loginWindow.mainloop()
 
     return (user_data)
