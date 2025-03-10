@@ -3,7 +3,7 @@ import tkinter as tk
 
 ########################
 def user_login():
-    loginWindow = tk.Toplevel()
+    loginWindow = tk.toplevel()
     loginWindow.title("Login")
     loginWindow.geometry("200x100")
 
@@ -30,6 +30,7 @@ def user_login():
                 lbl_info.config(text="Username and Password Correct.")
                 loginWindow.destroy()
                 return(user_data)
+
 
             else:
                 print("Invalid Password")
@@ -100,8 +101,6 @@ def user_login():
     password_entry.grid(row=2,column=1, columnspan=2)
     sub_btn.grid(row=3,column=1)
 
-    login_valid = True
-    while login_valid:
-        loginWindow.mainloop()
+    loginWindow.mainloop()
 
     return (user_data)
