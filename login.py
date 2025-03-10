@@ -23,9 +23,9 @@ def user_login():
         if str(username) in df["Username"].tolist():
             print("Valid Username")
             user_correct = True
-            selected_row = df.loc[df["Username"] == username]
+            user_data = df.loc[df["Username"] == username]
 
-            if str(password) == selected_row.iloc[0,1] and user_correct == True:
+            if str(password) == user_data.iloc[0,1] and user_correct == True:
                 print("Valid Password")
                 pass_correct = True
                 lbl_info.config(text="Username and Password Correct.")
@@ -42,9 +42,6 @@ def user_login():
         
         else:
             print("Invalid Input Occured.")
-
-        if user_correct == True and pass_correct == True:
-            user_data = selected_row
 
     frm_main = tk.Frame(
         loginWindow,
