@@ -47,7 +47,7 @@ def poke_lookup(poke_data):
         master=frm_info_main,
         text = "Close", 
         command = info_window.destroy,
-        bg="indian red",
+        bg="firebrick3",
         fg="white",
     )
 
