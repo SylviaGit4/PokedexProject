@@ -34,16 +34,16 @@ def search_button(entry):
 
         if valid == True:
             poke_name = (search_response['name']).title()
-            lbl_pokemon_name.config(text=poke_name)
-            lbl_error_handle.config(text="Valid")
+            lbl_pokemon_name.config(text=f"Selected Pokemon: {poke_name}")
+            lbl_error_handle.config(text="No Error Detected")
         
         else:
-            lbl_pokemon_name.config(text="POKEMON NAME")
+            lbl_pokemon_name.config(text="Selected Pokemon: N/A")
             lbl_error_handle.config(text=search_response)
 
 # Pokemon Info Function
 def poke_info(entry):
-    if lbl_error_handle.cget("text") == "Valid":
+    if lbl_error_handle.cget("text") == "No Error Detected":
         data.poke_lookup(entry)
 
     else:
@@ -131,7 +131,7 @@ btn_search = tk.Button(
 
 lbl_pokemon_name = tk.Label(
     master=frm_main,
-    text="POKEMON NAME",
+    text="Selected Pokemon: N/A",
     bg="SlateGray2",
     fg="black",
     highlightbackground="grey21",
@@ -140,7 +140,7 @@ lbl_pokemon_name = tk.Label(
 
 lbl_error_handle = tk.Label(
     master=frm_main,
-    text="Valid",
+    text="No Error Detected",
     bg="SlateGray2",
     fg="black",
     highlightbackground="grey21",

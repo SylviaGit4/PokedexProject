@@ -29,6 +29,7 @@ def poke_lookup(poke_data):
     info_window.columnconfigure(2, weight=1)
 
     # Data
+    poke_id = (poke_data['id'])
     poke_name = (poke_data['name']).title()
 
 
@@ -47,12 +48,30 @@ def poke_lookup(poke_data):
     sub_btn=tk.Button(
         master=frm_info_main,
         text = "Close", 
-        command = info_window.destroy(),
+        command = info_window.destroy,
         bg="indian red",
         fg="white",
     )
 
+    lbl_name = tk.Label(
+        master=frm_info_main,
+    text=f"Pokemon: {poke_name}",
+        bg="firebrick3",
+        fg="white",
+        padx="5",
+    )   
 
-    sub_btn.grid(row=3,column=1)
+    lbl_id = tk.Label(
+        master=frm_info_main,
+        text=f"ID: {poke_id}",
+        bg="firebrick3",
+        fg="white",
+        padx="5",
+    )   
+
+
+    sub_btn.grid(row=0,column=0)
+    lbl_name.grid(row=1,column=0)
+    lbl_id.grid(row=1,column=1)
 
     info_window.mainloop()
