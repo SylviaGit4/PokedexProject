@@ -31,11 +31,6 @@ def poke_lookup(poke_data):
     poke_id = (poke_data['id'])
     poke_name = (poke_data['name']).title()                                                                     
     poke_type = [typ["type"]["name"] for typ in poke_data["types"]]
-    print(len(poke_type))
-    #if len(poke_type) == 1:
-    #    poke_type_text = f"Types: {poke_type[1]}"
-    #else:
-    #    poke_type_text = f"Types: {poke_type[1], poke_type[2]}"
 
 
     frm_info_main = tk.Frame(
@@ -72,18 +67,26 @@ def poke_lookup(poke_data):
         padx="5",
     )   
 
-    lbl_types = tk.Label(
+    lbl_type_one = tk.Label(
         master=frm_info_main,
-        #text=poke_type_text,
+        text=f"Type 1: {poke_type[0]}",
         bg="indian red",
         fg="white",
         padx="5",
-    )   
+    ) 
+
+    lbl_type_two = tk.Label(
+        master=frm_info_main,
+        text=f"Type 2: {poke_type[0]}",
+        bg="indian red",
+        fg="white",
+        padx="5",
+    )     
 
 
     sub_btn.grid(row=0,column=0, pady=3)
     lbl_name.grid(row=1,column=0)
     lbl_id.grid(row=1,column=1)
-    lbl_types.grid(row=2,column=0, columnspan=2)
+    lbl_type_one.grid(row=2,column=0, columnspan=2)
 
     info_window.mainloop()
