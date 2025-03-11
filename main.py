@@ -2,17 +2,26 @@ import tkinter as tk
 import requests as rq
 import json
 import login
+import search
 
 ########################
 root = tk.Tk()
 root.title("Pokedex")
 ########################
 
-#Calling the login function later
+### EXTERNAL FUNCTIONS
+
+# Login Function
 def login_button():
     user_data = login.user_login()
     print(user_data)
     #lbl_username.config(text="username")
+
+# Search Function
+def search_button():
+    poke_name = search.poke_search(entry)
+    lbl_pokemon_name.config(text=poke_name)
+
 ########################
 
 frm_main = tk.Frame(
@@ -22,6 +31,8 @@ frm_main = tk.Frame(
     width="400",
     highlightbackground="grey27",
     highlightthickness=5,
+    padx="10",
+    pady="5",
     )
 
 
@@ -41,10 +52,11 @@ frm_key_bottom = tk.Frame(
     width="400", 
     )
 
-frm_main.grid(column=0,row=0, rowspan=1, sticky="ns")
-frm_key_right.grid(column=1, row=0, rowspan=2, sticky="ns")
-frm_key_bottom.grid(column=0, row=1, sticky="ns")
+frm_main.grid(column=0, row=0, rowspan=1, sticky="nsew")
+frm_key_right.grid(column=1, row=0, rowspan=2, sticky="nsew")
+frm_key_bottom.grid(column=0, row=1, rowspan=1, sticky="nsew")
 
+## RIGHT SIDE STUFF
 btn_login = tk.Button(
     master=frm_key_right,
     text="Login",
@@ -62,8 +74,46 @@ lbl_username = tk.Label(
     padx="5",
 )
 
-lbl_username.grid(column=0, row=0)
-btn_login.grid(column=0, row=1)
+lbl_username.grid(column=0, row=0, pady="2")
+btn_login.grid(column=0, row=1, pady="2")
+
+## MAIN STUFF
+
+lbl_search = tk.Label(
+    master=frm_main,
+    text="Input Pokemon Name/ID:",
+    bg="SlateGray1",
+    fg="black",
+)
+
+search_entry = tk.Entry(
+    master=frm_main,
+    bg="SlateGray2",
+    fg="black",
+)
+
+btn_search = tk.Button(
+    master=frm_main,
+    text="SEARCH",
+    bg="SlateGray2",
+    fg="black",
+    padx="5",
+    command= lambda: search_button(search_entry.get()),
+)
+
+lbl_pokemon_name = tk.Label(
+    master=frm_main,
+    text="POKEMON NAME",
+    bg="SlateGray2",
+    fg="black",
+    highlightbackground="grey21",
+    highlightthickness=2,
+)
+
+lbl_search.grid(column=0,row=0, columnspan=1)
+search_entry.grid(column=0, row=1)
+btn_search.grid(column=1, row=1)
+lbl_pokemon_name.grid(column=2,row=1, padx=10)
 
 ########################
 root.mainloop()
