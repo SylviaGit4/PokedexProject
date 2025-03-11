@@ -69,7 +69,7 @@ def poke_lookup(poke_data):
 
     lbl_type_one = tk.Label(
         master=frm_info_main,
-        text=f"Type 1: {poke_type[0]}",
+        text=f"Type 1: {(poke_type[0]).title()}",
         bg="indian red",
         fg="white",
         padx="5",
@@ -77,7 +77,7 @@ def poke_lookup(poke_data):
 
     lbl_type_two = tk.Label(
         master=frm_info_main,
-        text=f"Type 2: {poke_type[0]}",
+        text=f"Type 2: {(poke_type[1]).title()}",
         bg="indian red",
         fg="white",
         padx="5",
@@ -88,5 +88,6 @@ def poke_lookup(poke_data):
     lbl_name.grid(row=1,column=0)
     lbl_id.grid(row=1,column=1)
     lbl_type_one.grid(row=2,column=0, columnspan=2)
+    lbl_type_two.grid(row=3,column=0, columnspan=2)
 
     info_window.mainloop()
