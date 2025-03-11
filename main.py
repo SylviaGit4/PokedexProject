@@ -18,9 +18,17 @@ def login_button():
     #lbl_username.config(text="username")
 
 # Search Function
-def search_button():
-    poke_name = search.poke_search(entry)
-    lbl_pokemon_name.config(text=poke_name)
+def search_button(entry):
+    valid, response = search.poke_search(entry)
+
+    if valid == True:
+        pokemon_data = response
+        poke_name = (pokemon_data['name']).title()
+        lbl_pokemon_name.config(text=poke_name)
+    
+    else:
+        pokemon_data = "NULL"
+        lbl_pokemon_name.config(text=response)
 
 ########################
 
