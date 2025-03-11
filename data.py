@@ -20,7 +20,7 @@ def poke_search(entry):
 
 
 def poke_lookup(poke_data):
-    info_window = tk.Tk()
+    info_window = tk.Toplevel()
     info_window.title("Pokemon Inf")
     info_window.geometry("200x100")
 
@@ -32,7 +32,7 @@ def poke_lookup(poke_data):
     poke_name = (poke_data['name']).title()
 
 
-    frm_main = tk.Frame(
+    frm_info_main = tk.Frame(
         master=info_window,
         bg="indian red",
         height=75,
@@ -41,11 +41,11 @@ def poke_lookup(poke_data):
         highlightthickness=5,
     )
 
-    frm_main.grid(row=0,column=0)
+    frm_info_main.grid(row=0,column=0)
 
 
     sub_btn=tk.Button(
-        master=frm_main,
+        master=frm_info_main,
         text = "Close", 
         command = info_window.destroy(),
         bg="indian red",
