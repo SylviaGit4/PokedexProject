@@ -2,14 +2,18 @@ import tkinter as tk
 import requests as rq
 import json
 import login
-import search
+import data
 
 ########################
 root = tk.Tk()
 root.title("Pokedex")
 ########################
 
-### EXTERNAL FUNCTIONS
+### EXTERNAL FUNCTIONS & NECESSARY DEFINITIONS
+global search_response
+
+search_response = ""
+
 
 # Login Function
 def login_button():
@@ -19,16 +23,32 @@ def login_button():
 
 # Search Function
 def search_button(entry):
-    valid, response = search.poke_search(entry)
+    global search_response
 
-    if valid == True:
-        pokemon_data = response
-        poke_name = (pokemon_data['name']).title()
-        lbl_pokemon_name.config(text=poke_name)
-    
+    if entry == "":
+        lbl_error_handle.config(text="Error: No Input")
+
+    else: 
+
+        valid, search_response = data.poke_search(entry)
+
+        if valid == True:
+            poke_name = (search_response['name']).title()
+            lbl_pokemon_name.config(text=poke_name)
+            lbl_error_handle.config(text="Valid")
+        
+        else:
+            lbl_pokemon_name.config(text="POKEMON NAME")
+            lbl_error_handle.config(text=search_response)
+
+# Pokemon Info Function
+def poke_info(entry):
+    if lbl_error_handle.cget("text") == "Valid":
+        data.poke_lookup(entry)
+
     else:
-        pokemon_data = "NULL"
-        lbl_pokemon_name.config(text=response)
+        print("No valid data.")
+        lbl_error_handle.config(text="Error: No Valid Data")
 
 ########################
 
@@ -118,10 +138,31 @@ lbl_pokemon_name = tk.Label(
     highlightthickness=2,
 )
 
+lbl_error_handle = tk.Label(
+    master=frm_main,
+    text="Valid",
+    bg="SlateGray2",
+    fg="black",
+    highlightbackground="grey21",
+    highlightthickness=2,
+)
+
+btn_info = tk.Button(
+    master=frm_main,
+    text="POKE-INFO",
+    bg="SlateGray2",
+    fg="black",
+    padx="5",
+    command= lambda: poke_info(search_response),
+)
+
 lbl_search.grid(column=0,row=0, columnspan=1)
 search_entry.grid(column=0, row=1)
-btn_search.grid(column=1, row=1)
-lbl_pokemon_name.grid(column=2,row=1, padx=10)
+btn_search.grid(column=1, row=1, padx=2)
+btn_info.grid(column=2, row=1, padx=2)
+lbl_pokemon_name.grid(column=0,row=2, columnspan=1, padx=2, pady=2)
+lbl_error_handle.grid(column=1,row=2, columnspan=2, padx=2, pady=2)
+
 
 ########################
 root.mainloop()
