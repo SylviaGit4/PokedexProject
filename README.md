@@ -5,4 +5,5 @@ Pokedex project using tkinter and the pokeAPI for college work.
 
 ## TO DO:
 
--- Make the rest of the program.
+-- Make working login (Returns Username)
+-- Make working search (Returns pokemon name, icon, etc)
