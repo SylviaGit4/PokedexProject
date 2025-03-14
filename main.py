@@ -14,6 +14,11 @@ global search_response
 
 search_response = ""
 
+all_types = [
+ "normal", "fire", "water", "grass", "flying", "fighting",
+ "poison", "electric", "ground", "rock", "psychic", "ice", 
+ "bug", "ghost", "steel", "dragon", "dark", "fairy"
+ ]
 
 # Login Function
 def login_button():
@@ -23,23 +28,28 @@ def login_button():
 
 # Search Function
 def search_button(entry):
-    global search_response
+    entry = entry.lower()
+
+    global search_response ## DO NOT DELETE THIS, IT WILL BREAK IF YOU DO.
 
     if entry == "":
         lbl_error_handle.config(text="Error: No Input")
 
     else: 
+        if entry in all_types:
+            data.type_search(entry)
 
-        valid, search_response = data.poke_search(entry)
-
-        if valid == True:
-            poke_name = (search_response['name']).title()
-            lbl_pokemon_name.config(text=f"Selected Pokemon: {poke_name}")
-            lbl_error_handle.config(text="No Error Detected")
-        
         else:
-            lbl_pokemon_name.config(text="Selected Pokemon: N/A")
-            lbl_error_handle.config(text=search_response)
+            valid, search_response = data.poke_search(entry)
+
+            if valid == True:
+                poke_name = (search_response['name']).title()
+                lbl_pokemon_name.config(text=f"Selected Pokemon: {poke_name}")
+                lbl_error_handle.config(text="No Error Detected")
+            
+            else:
+                lbl_pokemon_name.config(text="Selected Pokemon: N/A")
+                lbl_error_handle.config(text=search_response)
 
 # Pokemon Info Function
 def poke_info(entry):

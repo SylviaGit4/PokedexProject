@@ -28,8 +28,8 @@ def poke_lookup(poke_data):
     info_window.columnconfigure(2, weight=1)
 
     # Data
-    poke_id = (poke_data['id'])
-    poke_name = (poke_data['name']).title()                                                                     
+    poke_id = (poke_data["id"])
+    poke_name = (poke_data["name"]).title()                                                                     
     poke_type = [typ["type"]["name"] for typ in poke_data["types"]]
 
 
@@ -91,3 +91,65 @@ def poke_lookup(poke_data):
     lbl_type_two.grid(row=3,column=0, columnspan=2)
 
     info_window.mainloop()
+
+
+def type_search(entry):
+
+    url = 'https://pokeapi.co/api/v2/type/' + entry
+    url_response = rq.get(url)
+
+    if url_response.status_code == 200:
+        print("Request successful.")
+        type_data = url_response.json()
+
+    else:
+        print(f"Error, URL response {url_response.status_code}")
+
+    
+    info_window = tk.Toplevel()
+    info_window.title("Type Ten")
+
+    info_window.columnconfigure(0, weight=1)
+    info_window.columnconfigure(1, weight=1)
+    info_window.columnconfigure(2, weight=1)
+
+    # Data
+    top_pokemon = []
+
+    for i in range(0,11):                                                
+        poke_data = (type_data["pokemon"][i])
+        top_pokemon.append(poke_data["pokemon"]["name"])
+
+
+    frm_info_main = tk.Frame(
+        master=info_window,
+        bg="indian red",
+        highlightbackground="grey27",
+        highlightthickness=5,
+    )
+
+    frm_info_main.grid(row=0,column=0)
+
+
+    sub_btn=tk.Button(
+        master=frm_info_main,
+        text = "Close", 
+        command = info_window.destroy,
+        bg="firebrick3",
+        fg="white",
+    )
+
+    sub_btn.grid(row=0,column=0, pady=3)
+
+    for i in range(0,11):
+        poke_name = tk.Label(
+            master=frm_info_main,
+            text=f"Pokemon {[i]}: {top_pokemon[i].title()}",
+            bg="indian red",
+            fg="white",
+            padx="5",
+        )   
+        poke_name.grid(row=[i+1],column=0)
+
+    info_window.mainloop()
+
