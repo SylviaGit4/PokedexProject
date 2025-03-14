@@ -157,8 +157,6 @@ def type_search(entry):
 def replace(party_value, uid, selected_poke):
     df = pd.read_csv("users.csv")
 
-    test = df.loc[df["UID"] == uid, party_value]
+    df.loc[df["UID"] == uid, party_value] = selected_poke
 
-    #df.replace([df["UID"] == uid, party_value], selected_poke)
-
-    df.to_csv("users.csv")
+    df.to_csv("users.csv", index=False)

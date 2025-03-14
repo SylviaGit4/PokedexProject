@@ -68,9 +68,7 @@ def poke_info(entry):
 
 # Replace Pokemon
 def replace_poke(label_num, party_value):
-    poke_data.replace(party_value, str(user_id), poke_name)
-
-    print(label_num, party_value, user_id, poke_name)
+    poke_data.replace(party_value, user_id, poke_name)
 
     if label_num == "1":
         lbl_poke_name_one.config(text=poke_name)
