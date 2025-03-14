@@ -2,10 +2,33 @@ import pandas as pd
 import tkinter as tk
 
 ########################
-def user_login():
+
+def user_login(username, password):
+    user_data = pd.read_csv("users.csv")
+
+    if str(username) in user_data["Username"].tolist():
+        selected_row = user_data.loc[user_data["Username"] == username]
+        print("Valid Username")
+
+        if str(password) == selected_row.iloc[0,2]:
+            print("Valid Password")
+            user_id = selected_row.iloc[0,0]
+            print(user_id)
+            
+        else:
+            print("Error: Invalid password.")
+
+
+    else:
+        print("Error: Username not found or invalid.")
+
+
+
+def login_view():
+    global user_id
+
     loginWindow = tk.Toplevel()
     loginWindow.title("Login")
-    loginWindow.geometry("200x100")
 
     loginWindow.columnconfigure(0, weight=1)
     loginWindow.columnconfigure(1, weight=1)
@@ -57,7 +80,15 @@ def user_login():
     sub_btn=tk.Button(
         master=frm_main,
         text = 'Submit', 
-        #command = lambda: submit(username_entry.get(), password_entry.get()),
+        command = lambda: user_login(username_entry.get(), password_entry.get()),
+        bg="indian red",
+        fg="white",
+    )
+
+    reg_btn=tk.Button(
+        master=frm_main,
+        text = 'Register', 
+        #command = lambda: user_login(username_entry.get(), password_entry.get()),
         bg="indian red",
         fg="white",
     )
@@ -67,8 +98,9 @@ def user_login():
     username_entry.grid(row=1,column=1, columnspan=2)
     lbl_password.grid(row=2,column=0)
     password_entry.grid(row=2,column=1, columnspan=2)
-    sub_btn.grid(row=3,column=1)
+    sub_btn.grid(row=3,column=1, pady=2)
+    reg_btn.grid(row=3,column=2, pady=2)
 
     loginWindow.mainloop()
 
-    #return (user_data)
+    return (user_id)

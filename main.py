@@ -12,6 +12,8 @@ root.title("Pokedex")
 ### EXTERNAL FUNCTIONS & NECESSARY DEFINITIONS
 global search_response
 
+global user_id
+
 search_response = ""
 
 all_types = [
@@ -22,9 +24,16 @@ all_types = [
 
 # Login Function
 def login_button():
-    user_data = login.user_login()
+    global user_id
+
+    user_id = login.login_view()
+    print(user_id)
+
+    data = pd.read_csv("users.csv")
+    user_data =  data.loc[data["UID"] == user_id]
     print(user_data)
-    #lbl_username.config(text="username")
+    
+    lbl_username.config(text="username")
 
 # Search Function
 def search_button(entry):
