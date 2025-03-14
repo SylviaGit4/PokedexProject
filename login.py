@@ -3,31 +3,38 @@ import tkinter as tk
 
 ########################
 
-def user_login(username, password):
-    user_data = pd.read_csv("users.csv")
-
-    if str(username) in user_data["Username"].tolist():
-        selected_row = user_data.loc[user_data["Username"] == username]
-        print("Valid Username")
-
-        if str(password) == selected_row.iloc[0,2]:
-            print("Valid Password")
-            user_id = selected_row.iloc[0,0]
-            print(user_id)
-            
-        else:
-            print("Error: Invalid password.")
-
-
-    else:
-        print("Error: Username not found or invalid.")
-
-
+global user_id
 
 def login_view():
     global user_id
 
-    loginWindow = tk.Toplevel()
+    def user_login(username, password):
+        global user_id
+
+        user_data = pd.read_csv("users.csv")
+
+        if str(username) in user_data["Username"].tolist():
+            selected_row = user_data.loc[user_data["Username"] == username]
+            print("Valid Username")
+
+            if str(password) == selected_row.iloc[0,2]:
+                print("Valid Password")
+
+                user_id = selected_row.iloc[0,0]
+                print(user_id)
+
+                loginWindow.destroy()
+                return(user_id)
+
+                
+            else:
+                print("Error: Invalid password.")
+
+
+        else:
+            print("Error: Username not found or invalid.")
+
+    loginWindow = tk.Tk()
     loginWindow.title("Login")
 
     loginWindow.columnconfigure(0, weight=1)
@@ -103,4 +110,4 @@ def login_view():
 
     loginWindow.mainloop()
 
-    return (user_id)
+    return(user_id)

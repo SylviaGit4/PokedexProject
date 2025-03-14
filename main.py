@@ -3,6 +3,17 @@ import requests as rq
 import json
 import login
 import data
+import pandas as pd
+
+
+## LOG IN WINDOW
+global user_id
+
+user_id = login.login_view()
+
+df = pd.read_csv("users.csv")
+user_data =  df.loc[df["UID"] == user_id]
+print(user_data)
 
 ########################
 root = tk.Tk()
@@ -12,28 +23,13 @@ root.title("Pokedex")
 ### EXTERNAL FUNCTIONS & NECESSARY DEFINITIONS
 global search_response
 
-global user_id
-
 search_response = ""
 
 all_types = [
- "normal", "fire", "water", "grass", "flying", "fighting",
- "poison", "electric", "ground", "rock", "psychic", "ice", 
- "bug", "ghost", "steel", "dragon", "dark", "fairy"
- ]
-
-# Login Function
-def login_button():
-    global user_id
-
-    user_id = login.login_view()
-    print(user_id)
-
-    data = pd.read_csv("users.csv")
-    user_data =  data.loc[data["UID"] == user_id]
-    print(user_data)
-    
-    lbl_username.config(text="username")
+"normal", "fire", "water", "grass", "flying", "fighting",
+"poison", "electric", "ground", "rock", "psychic", "ice", 
+"bug", "ghost", "steel", "dragon", "dark", "fairy"
+]
 
 # Search Function
 def search_button(entry):
@@ -103,11 +99,11 @@ frm_main.grid(column=0, row=0, rowspan=1, sticky="nsew")
 frm_key_right.grid(column=1, row=0, rowspan=2, sticky="nsew")
 frm_key_bottom.grid(column=0, row=1, rowspan=1, sticky="nsew")
 
-## RIGHT SIDE STUFF
-btn_login = tk.Button(
+# RIGHT SIDE STUFF
+btn_close = tk.Button(
     master=frm_key_right,
-    text="Login",
-    command=lambda:login_button(),
+    text="Close",
+    command=root.destroy,
     bg="firebrick3",
     fg="white",
     padx="5",
@@ -122,7 +118,7 @@ lbl_username = tk.Label(
 )
 
 lbl_username.grid(column=0, row=0, pady="2")
-btn_login.grid(column=0, row=1, pady="2")
+btn_close.grid(column=0, row=1, pady="2")
 
 ## MAIN STUFF
 
