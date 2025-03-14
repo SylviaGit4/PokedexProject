@@ -36,6 +36,7 @@ def search_button(entry):
     entry = entry.lower()
 
     global search_response ## DO NOT DELETE THIS, IT WILL BREAK IF YOU DO.
+    global poke_name
 
     if entry == "":
         lbl_error_handle.config(text="Error: No Input")
@@ -65,6 +66,25 @@ def poke_info(entry):
         print("No valid data.")
         lbl_error_handle.config(text="Error: No Valid Data")
 
+# Replace Pokemon
+def replace_poke(label_num, party_value):
+    poke_data.replace(party_value, str(user_id), poke_name)
+
+    print(label_num, party_value, user_id, poke_name)
+
+    if label_num == "1":
+        lbl_poke_name_one.config(text=poke_name)
+    if label_num == "2":
+        lbl_poke_name_two.config(text=poke_name)
+    if label_num == "3":
+        lbl_poke_name_three.config(text=poke_name)
+    if label_num == "4":
+        lbl_poke_name_four.config(text=poke_name)
+    if label_num == "5":
+        lbl_poke_name_five.config(text=poke_name)
+    if label_num == "6":
+        lbl_poke_name_six.config(text=poke_name)
+
 ########################
 
 frm_main = tk.Frame(
@@ -91,7 +111,7 @@ frm_key_right = tk.Frame(
 frm_key_bottom = tk.Frame(
     root,
     bg="indian red",
-    height="200",
+    height="50",
     width="400", 
     )
 
@@ -111,7 +131,7 @@ btn_close = tk.Button(
 
 lbl_username = tk.Label(
     master=frm_key_right,
-    text="USERNAME",
+    text=user_data.iloc[0,1],
     bg="firebrick3",
     fg="white",
     padx="5",
@@ -156,7 +176,7 @@ lbl_pokemon_name = tk.Label(
 lbl_error_handle = tk.Label(
     master=frm_main,
     text="No Error Detected",
-    bg="SlateGray2",
+    bg="thistle",
     fg="black",
     highlightbackground="grey21",
     highlightthickness=2,
@@ -182,7 +202,14 @@ lbl_error_handle.grid(column=1,row=2, columnspan=2, padx=2, pady=2)
 ## POKEMON LIST
 lbl_poke_one = tk.Label(
     master=frm_main,
-    text=(f"Pokémon: {user_data.iloc[4]}"),
+    text=(f"Pokémon:"),
+    bg="SlateGray1",
+    fg="black",
+)
+
+lbl_poke_name_one = tk.Label(
+    master=frm_main,
+    text=(f"{user_data.iloc[0,3]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -193,16 +220,24 @@ btn_poke_one = tk.Button(
     bg="SlateGray2",
     fg="black",
     padx="5",
-    #command= lambda: poke_info(search_response),
+    command= lambda: replace_poke("1", "Poke1"),
 )
 
 
 lbl_poke_two = tk.Label(
     master=frm_main,
-    text=(f"Pokémon: {user_data.iloc[5]}"),
+    text=(f"Pokémon:"),
     bg="SlateGray1",
     fg="black",
 )
+
+lbl_poke_name_two = tk.Label(
+    master=frm_main,
+    text=(f" {user_data.iloc[0,4]}"),
+    bg="SlateGray1",
+    fg="black",
+)
+
 
 btn_poke_two = tk.Button(
     master=frm_main,
@@ -210,13 +245,20 @@ btn_poke_two = tk.Button(
     bg="SlateGray2",
     fg="black",
     padx="5",
-    #command= lambda: poke_info(search_response),
+    command= lambda: replace_poke("2", "Poke2"),
 )
 
 
 lbl_poke_three = tk.Label(
     master=frm_main,
-    text=(f"Pokémon: {user_data.ilot[6]}"),
+    text=(f"Pokémon:"),
+    bg="SlateGray1",
+    fg="black",
+)
+
+lbl_poke_name_three = tk.Label(
+    master=frm_main,
+    text=(f" {user_data.iloc[0,5]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -227,13 +269,20 @@ btn_poke_three = tk.Button(
     bg="SlateGray2",
     fg="black",
     padx="5",
-    #command= lambda: poke_info(search_response),
+    command= lambda: replace_poke("3", "Poke3"),
 )
 
 
 lbl_poke_four = tk.Label(
     master=frm_main,
-    text=(f"Pokémon: {user_data.iloc[7]}"),
+    text=(f"Pokémon:"),
+    bg="SlateGray1",
+    fg="black",
+)
+
+lbl_poke_name_four = tk.Label(
+    master=frm_main,
+    text=(f" {user_data.iloc[0,6]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -244,13 +293,20 @@ btn_poke_four = tk.Button(
     bg="SlateGray2",
     fg="black",
     padx="5",
-    #command= lambda: poke_info(search_response),
+    command= lambda: replace_poke("4", "Poke4"),
 )
 
 
 lbl_poke_five = tk.Label(
     master=frm_main,
-    text=(f"Pokémon: {user_data.iloc[8]}"),
+    text=(f"Pokémon:"),
+    bg="SlateGray1",
+    fg="black",
+)
+
+lbl_poke_name_five = tk.Label(
+    master=frm_main,
+    text=(f" {user_data.iloc[0,7]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -261,12 +317,19 @@ btn_poke_five = tk.Button(
     bg="SlateGray2",
     fg="black",
     padx="5",
-    #command= lambda: poke_info(search_response),
+    command= lambda: replace_poke("5", "Poke5"),
 )
 
 lbl_poke_six = tk.Label(
     master=frm_main,
-    text=(f"Pokémon: {user_data.liloc[9]}"),
+    text=(f"Pokémon:"),
+    bg="SlateGray1",
+    fg="black",
+)
+
+lbl_poke_name_six = tk.Label(
+    master=frm_main,
+    text=(f" {user_data.iloc[0,8]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -277,25 +340,31 @@ btn_poke_six = tk.Button(
     bg="SlateGray2",
     fg="black",
     padx="5",
-    #command= lambda: poke_info(search_response),
+    command= lambda: replace_poke("6", "Poke6"),
 )
 
 lbl_poke_one.grid(column=0,row=3, pady=2)
+lbl_poke_name_one.grid(column=1,row=3, pady=2)
 btn_poke_one.grid(column=2, row=3, pady=2)
 
 lbl_poke_two.grid(column=0,row=4, pady=2)
+lbl_poke_name_two.grid(column=1,row=4, pady=2)
 btn_poke_two.grid(column=2, row=4, pady=2)
 
 lbl_poke_three.grid(column=0,row=5, pady=2)
+lbl_poke_name_three.grid(column=1,row=5, pady=2)
 btn_poke_three.grid(column=2, row=5, pady=2)
 
 lbl_poke_four.grid(column=0,row=6, pady=2)
+lbl_poke_name_four.grid(column=1,row=6, pady=2)
 btn_poke_four.grid(column=2, row=6, pady=2)
 
 lbl_poke_five.grid(column=0,row=7, pady=2)
+lbl_poke_name_five.grid(column=1,row=7, pady=2)
 btn_poke_five.grid(column=2, row=7, pady=2)
 
 lbl_poke_six.grid(column=0,row=8, pady=2)
+lbl_poke_name_six.grid(column=1,row=8, pady=2)
 btn_poke_six.grid(column=2, row=8, pady=2)
 
 

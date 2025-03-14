@@ -1,10 +1,11 @@
 import tkinter as tk
 import requests as rq
 import json
+import pandas as pd
 
 def poke_search(entry):
 
-    url = 'https://pokeapi.co/api/v2/pokemon/' + entry
+    url = 'https://pokeapi.co/api/v2/pokemon/' + entry.lower()
     url_response = rq.get(url)
 
     if url_response.status_code == 200:
@@ -153,3 +154,9 @@ def type_search(entry):
 
     info_window.mainloop()
 
+def replace(party_value, uid, selected_poke):
+    df = pd.read_csv("users.csv")
+
+    df.loc[df["UID"] == uid, party_value] = selected_poke
+
+    df.to_csv("users.csv")
