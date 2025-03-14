@@ -5,5 +5,10 @@ Pokedex project using tkinter and the pokeAPI for college work.
 
 ## TO DO:
 
--- Make working login (Returns Username)
--- Make working search (Returns pokemon name, icon, etc)
+-- Add ability to register.
+
+-- Add ability to change username.
+
+-- Add ability to delete account.
+
+-- Add sprites.
