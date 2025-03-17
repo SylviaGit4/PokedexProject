@@ -136,3 +136,103 @@ def login_view():
     loginWindow.mainloop()
 
     return(user_id)
+
+
+def user_options(user_id):
+    def change_username(user_id, new_username):
+        df = pd.read_csv("users.csv")
+
+        df.loc[df["UID"] == user_id, "Username"] = new_username
+
+        df.to_csv("users.csv", index=False)
+
+        lbl_info2.config(text="Username Changed")
+    
+    def delete_account(user_id):
+        df = pd.read_csv("users.csv")
+
+        df = df[df["UID"] != user_id]
+
+        df.to_csv("users.csv", index=False)
+
+        lbl_info2.config(text="Account Deleted.")
+
+
+    OptionWindow = tk.Tk()
+    OptionWindow.title("Option")
+
+    OptionWindow.columnconfigure(0, weight=1)
+    OptionWindow.columnconfigure(1, weight=1)
+    OptionWindow.columnconfigure(2, weight=1)
+
+    frm_main = tk.Frame(
+        OptionWindow,
+        bg="indian red",
+        height=75,
+        width=200,
+        highlightbackground="grey27",
+        highlightthickness=5,
+    )
+    frm_main.grid(row=0,column=1)
+
+    btn_close = tk.Button(
+        master=frm_main,
+        text="Close",
+        command=OptionWindow.destroy,
+        bg="firebrick3",
+        fg="white",
+    )
+
+    lbl_info = tk.Label(
+        master=frm_main,
+        text="Change your username or delete your account here.",
+        bg="indian red",
+        fg="white",
+    )
+
+    lbl_info2 = tk.Label(
+        master=frm_main,
+        text="",
+        bg="indian red",
+        fg="white",
+    )
+
+    lbl_username = tk.Label(
+        master=frm_main,
+        text="New Username:",
+        bg="indian red",
+        fg="white",
+    )
+
+    username_entry = tk.Entry(
+        master=frm_main,
+        bg="firebrick3",
+        fg="white",
+    )
+
+    confirm_btn=tk.Button(
+        master=frm_main,
+        text = 'Submit', 
+        command = lambda: change_username(user_id, username_entry.get()),
+        bg="indian red",
+        fg="white",
+    )
+
+    delete_btn=tk.Button(
+        master=frm_main,
+        text = 'Delete Account', 
+        command = lambda: delete_account(user_id),
+        bg="indian red",
+        fg="white",
+    )
+
+    btn_close.grid(row=0, column=2, pady=2)
+    lbl_info.grid(row=0,column=0, columnspan=2)
+    lbl_info2.grid(row=2,column=0)
+    lbl_username.grid(row=1,column=0)
+    username_entry.grid(row=1,column=1)
+    confirm_btn.grid(row=1,column=2, pady=2)
+    delete_btn.grid(row=2,column=1, pady=2, columnspan=2)
+
+    OptionWindow.mainloop()
+

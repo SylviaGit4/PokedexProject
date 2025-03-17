@@ -13,7 +13,6 @@ user_id = login.login_view()
 
 df = pd.read_csv("users.csv")
 user_data =  df.loc[df["UID"] == user_id]
-print(user_data)
 
 ########################
 root = tk.Tk()
@@ -83,6 +82,10 @@ def replace_poke(label_num, party_value):
     if label_num == "6":
         lbl_poke_name_six.config(text=poke_name)
 
+# Options menu
+def options(user_id):
+ login.user_options(user_id)
+
 ########################
 
 frm_main = tk.Frame(
@@ -138,7 +141,7 @@ lbl_username = tk.Label(
 btn_options = tk.Button(
     master=frm_key_right,
     text="Options",
-    #command=root.destroy,
+    command=lambda: options(user_id),
     bg="firebrick3",
     fg="white",
     padx="2",
@@ -152,7 +155,7 @@ btn_options.grid(column=0, row=2, pady="2")
 
 lbl_search = tk.Label(
     master=frm_main,
-    text="Input Pokemon Name/ID:",
+    text="Input Pokemon Name/ID/Type:",
     bg="SlateGray1",
     fg="black",
 )

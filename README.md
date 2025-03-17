@@ -16,11 +16,12 @@ Pokedex project using tkinter and the pokeAPI for college work.
 
 -- Ability to register.
 
+-- Ability to change username.
+
+-- Ability to delete account.
+
 
 ## TO DO:
 
--- Add ability to change username.
-
--- Add ability to delete account.
 
 -- Add sprites.
