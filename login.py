@@ -34,6 +34,31 @@ def login_view():
         else:
             print("Error: Username not found or invalid.")
 
+    def user_register(username, password):
+        global user_id
+
+        df = pd.read_csv("users.csv")
+        
+        user_id = (df.iloc[-1][0]) + 1
+
+        new_user = {"UID":user_id,
+                    "username":username, 
+                    "password":password,
+                    "poke1":"empty",
+                    "poke2":"empty",
+                    "poke3":"empty",
+                    "poke4":"empty",
+                    "poke5":"empty",
+                    "poke6":"empty"
+                    }
+
+        new_row = pd.DataFrame([new_user])
+
+        new_row.to_csv("users.csv", mode="a", header=False, index=False)
+
+        loginWindow.destroy()
+        return(user_id)
+
     loginWindow = tk.Tk()
     loginWindow.title("Login")
 
@@ -95,7 +120,7 @@ def login_view():
     reg_btn=tk.Button(
         master=frm_main,
         text = 'Register', 
-        #command = lambda: user_login(username_entry.get(), password_entry.get()),
+        command = lambda: user_register(username_entry.get(), password_entry.get()),
         bg="indian red",
         fg="white",
     )

@@ -135,8 +135,18 @@ lbl_username = tk.Label(
     padx="5",
 )
 
+btn_options = tk.Button(
+    master=frm_key_right,
+    text="Options",
+    #command=root.destroy,
+    bg="firebrick3",
+    fg="white",
+    padx="2",
+)
+
 lbl_username.grid(column=0, row=0, pady="2")
 btn_close.grid(column=0, row=1, pady="2")
+btn_options.grid(column=0, row=2, pady="2")
 
 ## MAIN STUFF
 

@@ -14,11 +14,10 @@ Pokedex project using tkinter and the pokeAPI for college work.
 
 -- Adding pokemon to a party and saving to CSV.
 
+-- Ability to register.
 
 
 ## TO DO:
-
--- Add ability to register.
 
 -- Add ability to change username.
 

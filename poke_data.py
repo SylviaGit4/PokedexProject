@@ -76,13 +76,23 @@ def poke_lookup(poke_data):
         padx="5",
     ) 
 
-    lbl_type_two = tk.Label(
-        master=frm_info_main,
-        text=f"Type 2: {(poke_type[1]).title()}",
-        bg="indian red",
-        fg="white",
-        padx="5",
-    )     
+    if len(poke_type) > 1:
+        lbl_type_two = tk.Label(
+            master=frm_info_main,
+            text=f"Type 2: {(poke_type[1]).title()}",
+            bg="indian red",
+            fg="white",
+            padx="5",
+        )    
+    
+    else:
+        lbl_type_two = tk.Label(
+            master=frm_info_main,
+            text=f"Type 2: N/A",
+            bg="indian red",
+            fg="white",
+            padx="5",
+        )    
 
 
     sub_btn.grid(row=0,column=0, pady=3)
