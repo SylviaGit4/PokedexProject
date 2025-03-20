@@ -2,6 +2,8 @@ import tkinter as tk
 import requests as rq
 import json
 import pandas as pd
+from urllib.request import urlopen
+from PIL import ImageTk
 
 def poke_search(entry):
 
@@ -32,6 +34,11 @@ def poke_lookup(poke_data):
     poke_id = (poke_data["id"])
     poke_name = (poke_data["name"]).title()                                                                     
     poke_type = [typ["type"]["name"] for typ in poke_data["types"]]
+
+    poke_sprite_url = poke_data["sprites"]['front_default']
+    poke_sprite = urlopen(poke_sprite_url)
+    poke_image = ImageTk.PhotoImage(data=poke_sprite.read())
+
 
 
     frm_info_main = tk.Frame(
@@ -93,13 +100,19 @@ def poke_lookup(poke_data):
             fg="white",
             padx="5",
         )    
-
+    
+    lbl_poke_image = tk.Label(
+        master=frm_info_main,
+        image = poke_image,
+        bg="indian red"
+    )
 
     sub_btn.grid(row=0,column=0, pady=3)
     lbl_name.grid(row=1,column=0)
     lbl_id.grid(row=1,column=1)
-    lbl_type_one.grid(row=2,column=0, columnspan=2)
-    lbl_type_two.grid(row=3,column=0, columnspan=2)
+    lbl_poke_image.grid(row=2, column=0, columnspan=2)
+    lbl_type_one.grid(row=3,column=0, columnspan=1)
+    lbl_type_two.grid(row=4,column=0, columnspan=1)
 
     info_window.mainloop()
 
