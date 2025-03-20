@@ -84,7 +84,8 @@ def replace_poke(label_num, party_value):
 
 # Options menu
 def options(user_id):
- login.user_options(user_id)
+    login.user_options(user_id)
+    lbl_username.config(text=user_data.iloc[0,1])
 
 # Party Pokemon Info
 def selected_poke_info(poke_name):
@@ -257,7 +258,7 @@ btn_info_one = tk.Button(
     text="Info",
     bg="SlateGray2",
     fg="black",
-    padx="5",
+    padx="2",
     command= lambda: selected_poke_info(lbl_poke_name_one.cget("text")),
 )
 
@@ -290,7 +291,7 @@ btn_info_two = tk.Button(
     text="Info",
     bg="SlateGray2",
     fg="black",
-    padx="5",
+    padx="2",
     command= lambda: selected_poke_info(lbl_poke_name_two.cget("text")),
 )
 
@@ -323,7 +324,7 @@ btn_info_three = tk.Button(
     text="Info",
     bg="SlateGray2",
     fg="black",
-    padx="5",
+    padx="2",
     command= lambda: selected_poke_info(lbl_poke_name_three.cget("text")),
 )
 
@@ -356,7 +357,7 @@ btn_info_four = tk.Button(
     text="Info",
     bg="SlateGray2",
     fg="black",
-    padx="5",
+    padx="2",
     command= lambda: selected_poke_info(lbl_poke_name_four.cget("text")),
 )
 
@@ -389,7 +390,7 @@ btn_info_five = tk.Button(
     text="Info",
     bg="SlateGray2",
     fg="black",
-    padx="5",
+    padx="2",
     command= lambda: selected_poke_info(lbl_poke_name_five.cget("text")),
 )
 
@@ -422,7 +423,7 @@ btn_info_six = tk.Button(
     text="Info",
     bg="SlateGray2",
     fg="black",
-    padx="5",
+    padx="2",
     command= lambda: selected_poke_info(lbl_poke_name_six.cget("text")),
 )
 
@@ -430,32 +431,32 @@ btn_info_six = tk.Button(
 lbl_poke_one.grid(column=0,row=3, pady=2)
 lbl_poke_name_one.grid(column=1,row=3, pady=2)
 btn_poke_one.grid(column=2, row=3, pady=2)
-btn_info_one.grid(column=3, row=3, pady=2)
+btn_info_one.grid(column=3, row=3, pady=2, padx=2)
 
 lbl_poke_two.grid(column=0,row=4, pady=2)
 lbl_poke_name_two.grid(column=1,row=4, pady=2)
 btn_poke_two.grid(column=2, row=4, pady=2)
-btn_info_two.grid(column=3, row=4, pady=2)
+btn_info_two.grid(column=3, row=4, pady=2, padx=2)
 
 lbl_poke_three.grid(column=0,row=5, pady=2)
 lbl_poke_name_three.grid(column=1,row=5, pady=2)
 btn_poke_three.grid(column=2, row=5, pady=2)
-btn_info_three.grid(column=3, row=5, pady=2)
+btn_info_three.grid(column=3, row=5, pady=2, padx=2)
 
 lbl_poke_four.grid(column=0,row=6, pady=2)
 lbl_poke_name_four.grid(column=1,row=6, pady=2)
 btn_poke_four.grid(column=2, row=6, pady=2)
-btn_info_four.grid(column=3, row=6, pady=2)
+btn_info_four.grid(column=3, row=6, pady=2, padx=2)
 
 lbl_poke_five.grid(column=0,row=7, pady=2)
 lbl_poke_name_five.grid(column=1,row=7, pady=2)
 btn_poke_five.grid(column=2, row=7, pady=2)
-btn_info_five.grid(column=3, row=7, pady=2)
+btn_info_five.grid(column=3, row=7, pady=2, padx=2)
 
 lbl_poke_six.grid(column=0,row=8, pady=2)
 lbl_poke_name_six.grid(column=1,row=8, pady=2)
 btn_poke_six.grid(column=2, row=8, pady=2)
-btn_info_six.grid(column=3, row=8, pady=2)
+btn_info_six.grid(column=3, row=8, pady=2, padx=2)
 
 ########################
 root.mainloop()
