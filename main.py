@@ -85,7 +85,6 @@ def replace_poke(label_num, party_value):
 # Options menu
 def options(user_id):
     login.user_options(user_id)
-    lbl_username.config(text=user_data.iloc[0,1])
 
 # Party Pokemon Info
 def selected_poke_info(poke_name):
