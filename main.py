@@ -86,6 +86,28 @@ def replace_poke(label_num, party_value):
 def options(user_id):
  login.user_options(user_id)
 
+# Party Pokemon Info
+def selected_poke_info(poke_name):
+    entry = poke_name.lower()
+
+    if entry == "":
+        lbl_error_handle.config(text="Error: No Input")
+
+    else:
+        valid, search_response = poke_data.poke_search(entry)
+
+        if valid == True:
+            lbl_error_handle.config(text="No Error Detected")
+            
+            poke_data.poke_lookup(search_response)
+
+        else:
+            lbl_error_handle.config(text=search_response)
+
+    
+
+
+
 ########################
 
 frm_main = tk.Frame(
