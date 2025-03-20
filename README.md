@@ -20,8 +20,5 @@ Pokedex project using tkinter and the pokeAPI for college work.
 
 -- Ability to delete account.
 
+-- Display sprites.
 
-## TO DO:
-
-
--- Add sprites.

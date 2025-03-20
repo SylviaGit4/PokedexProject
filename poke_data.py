@@ -35,9 +35,13 @@ def poke_lookup(poke_data):
     poke_name = (poke_data["name"]).title()                                                                     
     poke_type = [typ["type"]["name"] for typ in poke_data["types"]]
 
-    poke_sprite_url = poke_data["sprites"]['front_default']
-    poke_sprite = urlopen(poke_sprite_url)
-    poke_image = ImageTk.PhotoImage(data=poke_sprite.read())
+    if poke_id != 678:
+        poke_sprite_url = poke_data["sprites"]['front_default']
+        poke_sprite = urlopen(poke_sprite_url)
+        poke_image = ImageTk.PhotoImage(data=poke_sprite.read())
+
+    elif poke_id == 678:
+        poke_sprite = "No Valid Sprite"
 
 
 
@@ -101,16 +105,26 @@ def poke_lookup(poke_data):
             padx="5",
         )    
     
-    lbl_poke_image = tk.Label(
-        master=frm_info_main,
-        image = poke_image,
-        bg="indian red"
-    )
+    if poke_id != 678:
+        lbl_poke_sprite = tk.Label(
+            master=frm_info_main,
+            image = poke_image,
+            bg="indian red",
+        )
+
+    elif poke_id == 678:
+        lbl_poke_sprite = tk.Label(
+            master=frm_info_main,
+            text=poke_sprite,
+            fg="White",
+            bg="indian red",
+        )
+
 
     sub_btn.grid(row=0,column=0, pady=3)
     lbl_name.grid(row=1,column=0)
     lbl_id.grid(row=1,column=1)
-    lbl_poke_image.grid(row=2, column=0, columnspan=2)
+    lbl_poke_sprite.grid(row=2, column=0, columnspan=2)
     lbl_type_one.grid(row=3,column=0, columnspan=1)
     lbl_type_two.grid(row=4,column=0, columnspan=1)
 
