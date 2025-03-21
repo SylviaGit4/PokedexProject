@@ -271,7 +271,7 @@ lbl_poke_two = tk.Label(
 
 lbl_poke_name_two = tk.Label(
     master=frm_main,
-    text=(f" {user_data.iloc[0,4]}"),
+    text=(f"{user_data.iloc[0,4]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -304,7 +304,7 @@ lbl_poke_three = tk.Label(
 
 lbl_poke_name_three = tk.Label(
     master=frm_main,
-    text=(f" {user_data.iloc[0,5]}"),
+    text=(f"{user_data.iloc[0,5]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -337,7 +337,7 @@ lbl_poke_four = tk.Label(
 
 lbl_poke_name_four = tk.Label(
     master=frm_main,
-    text=(f" {user_data.iloc[0,6]}"),
+    text=(f"{user_data.iloc[0,6]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -370,7 +370,7 @@ lbl_poke_five = tk.Label(
 
 lbl_poke_name_five = tk.Label(
     master=frm_main,
-    text=(f" {user_data.iloc[0,7]}"),
+    text=(f"{user_data.iloc[0,7]}"),
     bg="SlateGray1",
     fg="black",
 )
@@ -403,7 +403,7 @@ lbl_poke_six = tk.Label(
 
 lbl_poke_name_six = tk.Label(
     master=frm_main,
-    text=(f" {user_data.iloc[0,8]}"),
+    text=(f"{user_data.iloc[0,8]}"),
     bg="SlateGray1",
     fg="black",
 )
